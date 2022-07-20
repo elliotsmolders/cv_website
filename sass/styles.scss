@@ -1,0 +1,199 @@
+@use "./base/reset";
+@use "./base/_variables.scss" as *;
+
+body {
+  height: 200vh;
+  overflow-x: hidden;
+}
+canvas {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  background-color: black;
+}
+.hero {
+  height: 90vh;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  h1 {
+    font-family: montserrat, sans-serif;
+    font-size: 3em;
+    color: $white;
+    &.top {
+      animation: title-slide-in-left 1.5s ease-out 0s 1 normal forwards;
+    }
+    &.bottom {
+      animation: title-slide-in-right 1.5s ease-out 0s 1 normal forwards;
+    }
+  }
+  span {
+    color: $primary;
+  }
+  a {
+    position: relative;
+    margin-top: 2em;
+    color: $primary;
+    border: 2px solid $primary;
+    border-radius: 5px;
+    padding: 0.5em 1.5em;
+    font-size: 1.5em;
+    width: 8em;
+    opacity: 0;
+    animation: slide-in-bottom 1.5s ease-out 0.3s 1 normal forwards;
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      height: 100%;
+      width: 100%;
+      border: 2px solid $primary;
+      transform-origin: 50%;
+      border-radius: 5px;
+    }
+    &:hover {
+      &::after {
+        filter: blur(2px);
+        transform: scale(1.3, 2);
+        opacity: 0;
+        transition-duration: 1.2s;
+        transition-timing-function: ease;
+      }
+      &::before {
+        filter: blur(2px);
+        transform: scale(1.3, 2);
+        opacity: 0;
+        transition-duration: 1.2s;
+        transition-delay: 0.2s;
+        transition-timing-function: ease;
+      }
+    }
+  }
+}
+nav {
+  position: sticky;
+  top: 0vh;
+  height: 10vh;
+  background-color: $darkgrey;
+  color: $white;
+  backdrop-filter: blur(10px);
+
+  .header-container {
+    display: flex;
+    height: 100%;
+    width: 97vw;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    font-size: 1em;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    &.social {
+      li {
+        font-size: 1.5em;
+      }
+      svg {
+        fill: $grey;
+        width: 1.5em;
+        height: 1.5em;
+        &:hover {
+          fill: $white;
+          transform: scale(1.1, 1.1);
+          transition-duration: 0.5s;
+        }
+      }
+    }
+    &.navigation {
+      margin-left: auto;
+      justify-content: center;
+      flex-wrap: wrap;
+      a {
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -3px;
+          height: 3px;
+          width: 0%;
+          background-color: $primary;
+          transition: 0.75s;
+        }
+        &:hover {
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+    li {
+      margin: 5px 5px;
+      a {
+        padding: 5px;
+        text-transform: uppercase;
+        &.active {
+          color: $primary;
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+      color: $white;
+    }
+  }
+}
+
+@keyframes title-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-5em);
+  }
+  to {
+    opacity: 100;
+    transform: translateX(0);
+  }
+}
+@keyframes title-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(5em);
+  }
+  to {
+    opacity: 100;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(7em);
+  }
+  to {
+    opacity: 100;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .hero {
+  }
+  nav {
+    height: 15vh;
+    font-size: 1em;
+    ul.navigation {
+      margin-left: 0;
+    }
+  }
+}
