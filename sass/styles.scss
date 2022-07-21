@@ -2,7 +2,7 @@
 @use "./base/_variables.scss" as *;
 
 body {
-  min-height: 400vh;
+  min-height: 100vh;
   overflow-x: hidden;
   background-color: $black;
   font-family: montserrat, sans-serif;
@@ -88,9 +88,8 @@ nav {
   height: 10vh;
   background-color: $darkgrey;
   color: $white;
-  backdrop-filter: blur(10px);
-  z-index: 1;
-
+  z-index: 10;
+  border-bottom: 10px solid $background-grey;
   .header-container {
     display: flex;
     height: 100%;
@@ -231,7 +230,7 @@ section.skillset {
         width: 100%;
       }
       &:after {
-        content: "microsoft sql";
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -302,7 +301,7 @@ section.skillset {
           box-shadow: inset 0 0 0 0.5em rgba(255, 255, 255, 0.142);
         }
         &:after {
-          content: "microsoft sql";
+          content: "Microsoft SQL";
         }
       }
     }
@@ -439,6 +438,80 @@ section.experience {
     }
   }
 }
+section.contact {
+  width: 40%;
+  p {
+    margin: 5em 0;
+    color: $white;
+    a {
+      color: $white;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    input,
+    textarea {
+      background-color: $background-grey;
+      outline: none;
+      border: none;
+      margin-bottom: 0.5em;
+      padding: 1em;
+      color: $white;
+      font-family: montserrat, sans-serif;
+    }
+    textarea {
+      height: 5em;
+    }
+    button {
+      padding: 0.5em 1.25em;
+      margin-top: 1em;
+      position: relative;
+      background-color: transparent;
+      color: $white;
+      margin-left: auto;
+      font-size: 1em;
+      text-align: right;
+      border: none;
+      cursor: pointer;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $secondary;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $secondary;
+        z-index: -1;
+      }
+      &:hover {
+        &::before {
+          transition: 0.3s;
+          transform: translateY(-100%);
+        }
+        &::after {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+.cover {
+  transform: translateX(2px);
+  width: 100%;
+  height: 4em;
+  background-color: black;
+}
 
 @keyframes title-slide-in-left {
   from {
@@ -533,6 +606,14 @@ section.experience {
       }
     }
   }
+  section.contact {
+    p {
+      text-align: center;
+    }
+    button {
+      margin: 1em auto 0 auto;
+    }
+  }
 }
 @media screen and (max-width: 600px) {
   section {
@@ -553,6 +634,11 @@ section.experience {
     font-size: 1em;
     ul.navigation {
       margin-left: 0;
+    }
+  }
+  section.contact {
+    p {
+      margin: 2em 0;
     }
   }
 }
