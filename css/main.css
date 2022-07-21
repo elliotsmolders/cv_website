@@ -139,8 +139,10 @@ a {
 }
 
 body {
-  height: 200vh;
+  min-height: 400vh;
   overflow-x: hidden;
+  background-color: #000;
+  font-family: montserrat, sans-serif;
 }
 
 canvas {
@@ -150,7 +152,10 @@ canvas {
   left: 0;
   width: 100%;
   display: block;
-  background-color: black;
+}
+
+.wrapper {
+  position: relative;
 }
 
 .hero {
@@ -164,7 +169,6 @@ canvas {
   text-align: center;
 }
 .hero h1 {
-  font-family: montserrat, sans-serif;
   font-size: 3em;
   color: #fff;
 }
@@ -223,6 +227,7 @@ nav {
   background-color: rgb(60, 60, 60);
   color: #fff;
   backdrop-filter: blur(10px);
+  z-index: 1;
 }
 nav .header-container {
   display: flex;
@@ -252,9 +257,14 @@ nav ul.social svg:hover {
   transition-duration: 0.5s;
 }
 nav ul.navigation {
+  color: rgb(250, 199, 72);
   margin-left: auto;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: -10px;
+}
+nav ul.navigation li {
+  margin-top: 10px;
 }
 nav ul.navigation a {
   position: relative;
@@ -287,6 +297,263 @@ nav ul a {
   color: #fff;
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  margin: 10em auto 10em auto;
+}
+
+h2.section-title {
+  color: #fff;
+  font-size: 3em;
+  font-weight: 700;
+  position: relative;
+}
+h2.section-title::after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 15%;
+  width: 90%;
+  height: 0.4em;
+  background-color: rgb(1, 143, 133);
+  z-index: -1;
+}
+
+section.about .top {
+  margin-top: 5em;
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+}
+section.about .top svg {
+  width: 25%;
+}
+section.about .top p {
+  margin-left: 15%;
+  width: 60%;
+  color: #fff;
+}
+
+section.skillset {
+  width: 85%;
+}
+section.skillset h2 {
+  margin-bottom: 2em;
+}
+section.skillset hr.line {
+  border: none;
+  height: 2px;
+  background-image: linear-gradient(to right, #000, #fff, #000);
+  width: 100%;
+}
+section.skillset ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0;
+}
+section.skillset ul li {
+  margin: 1.5em 0.75em;
+  padding: 0.25em;
+  position: relative;
+  height: 4em;
+  width: 4em;
+}
+section.skillset ul li svg {
+  height: 100%;
+  width: 100%;
+}
+section.skillset ul li:after {
+  content: "microsoft sql";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  text-align: center;
+  width: 100%;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  font-size: 1em;
+  font-weight: 600;
+  color: #fff;
+}
+section.skillset ul li:hover {
+  background-color: rgba(255, 255, 255, 0.142);
+}
+section.skillset ul li:hover::after {
+  animation: slide-out-top 0.75s ease-out 0s 1 normal forwards;
+}
+section.skillset ul li.c-sharp:after {
+  content: "C-Sharp";
+}
+section.skillset ul li.html:after {
+  content: "Html-5";
+}
+section.skillset ul li.css:after {
+  content: "Css-3";
+}
+section.skillset ul li.js:after {
+  content: "Javascript";
+}
+section.skillset ul li.sass:after {
+  content: "Sass";
+}
+section.skillset ul li.angular:after {
+  content: "Angular";
+}
+section.skillset ul li.typescript:after {
+  content: "Typescript";
+}
+section.skillset ul li.git:after {
+  content: "Git";
+}
+section.skillset ul li.sql {
+  background-clip: content-box;
+  box-shadow: inset 0 0 0 0.5em transparent;
+  background-color: white;
+}
+section.skillset ul li.sql:hover {
+  box-shadow: inset 0 0 0 0.5em rgba(255, 255, 255, 0.142);
+}
+section.skillset ul li.sql:after {
+  content: "microsoft sql";
+}
+
+section.projects article.project {
+  margin-top: 5em;
+  display: flex;
+  justify-content: end;
+}
+section.projects article.project:nth-of-type(even) {
+  flex-direction: row-reverse;
+  justify-content: start;
+}
+section.projects article.project:nth-of-type(even) .text {
+  margin-left: 0;
+  margin-right: auto;
+}
+section.projects article.project img {
+  width: 60%;
+  object-fit: cover;
+  object-position: center;
+  max-height: 20em;
+  align-self: center;
+}
+section.projects article.project .text {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  width: 35%;
+  color: #fff;
+}
+section.projects article.project .text h3 {
+  font-size: 3em;
+  position: relative;
+}
+section.projects article.project .text h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  width: 70%;
+  height: 0.4em;
+  background-color: rgb(245, 96, 70);
+  z-index: -1;
+}
+section.projects article.project .text p {
+  margin: 2em 0;
+}
+section.projects article.project .text a {
+  color: #fff;
+  width: 10em;
+  text-transform: uppercase;
+  margin-top: 2em;
+  position: relative;
+  cursor: pointer;
+}
+section.projects article.project .text a::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5em;
+  left: 0;
+  background-color: rgb(245, 96, 70);
+  height: 3px;
+  width: 100%;
+}
+
+section.experience {
+  color: #fff;
+}
+section.experience .timeline {
+  position: relative;
+  width: 100%;
+  margin-top: 5em;
+}
+section.experience .timeline::after {
+  content: "";
+  position: absolute;
+  left: calc(50% + 1px);
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.362);
+}
+section.experience .timeline .timeline-item {
+  position: relative;
+  margin-bottom: 2em;
+  width: 100%;
+}
+section.experience .timeline .timeline-item .content {
+  background-color: #282828;
+  width: calc(40% - 2em);
+  margin-right: auto;
+  padding: 1em;
+  border-radius: 10px;
+}
+section.experience .timeline .timeline-item .content h4 {
+  font-weight: 600;
+}
+section.experience .timeline .timeline-item .content p {
+  font-size: 0.8em;
+  margin-top: 1em;
+  font-weight: 200;
+}
+section.experience .timeline .timeline-item .content p a {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+section.experience .timeline .timeline-item:nth-of-type(even) .content {
+  margin-right: 0;
+  margin-left: auto;
+}
+section.experience .timeline .timeline-item:nth-of-type(even) .date {
+  left: calc(50% - 3em - 35px);
+}
+section.experience .timeline .timeline-item .circle {
+  position: absolute;
+  top: calc(50% - 0.5em);
+  left: calc(50% - 0.5em);
+  height: 1em;
+  width: 1em;
+  background-color: black;
+  border: 2px solid rgb(245, 96, 70);
+  border-radius: 50%;
+  z-index: 1;
+}
+section.experience .timeline .timeline-item .date {
+  position: absolute;
+  top: calc(50% - 0.5em);
+  left: calc(50% + 3em);
+}
+
 @keyframes title-slide-in-left {
   from {
     opacity: 0;
@@ -317,10 +584,80 @@ nav ul a {
     transform: translateY(0);
   }
 }
+@keyframes slide-out-top {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+  100% {
+    opacity: 100;
+    transform: translateY(2em);
+  }
+}
 @media screen and (max-width: 850px) {
+  section {
+    width: 85%;
+  }
+  .hero {
+    height: 85vh;
+  }
   nav {
     height: 15vh;
     font-size: 1em;
+  }
+  nav ul.navigation {
+    margin-left: 0;
+  }
+  section.about .top {
+    flex-direction: column;
+  }
+  section.about .top p {
+    text-align: center;
+    margin: 3em 0;
+  }
+  section.projects article.project {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  section.projects article.project:nth-of-type(even) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  section.projects article.project:nth-of-type(even) .text {
+    margin-right: 0;
+  }
+  section.projects article.project .text {
+    width: 60%;
+    margin-bottom: 5em;
+    align-items: center;
+    text-align: center;
+    margin-left: 0;
+  }
+  section.projects article.project .text h3 {
+    font-size: 2em;
+  }
+}
+@media screen and (max-width: 600px) {
+  section {
+    width: 90%;
+  }
+  .hero {
+    height: calc(85vh - 10px);
+  }
+  nav {
+    padding-top: 10px;
+    font-size: 1em;
+  }
+  nav li.icon > a > svg {
+    height: 1em;
+    width: 1em;
+  }
+  nav li.name {
+    display: none;
   }
   nav ul.navigation {
     margin-left: 0;

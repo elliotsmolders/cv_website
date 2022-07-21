@@ -2,8 +2,10 @@
 @use "./base/_variables.scss" as *;
 
 body {
-  height: 200vh;
+  min-height: 400vh;
   overflow-x: hidden;
+  background-color: $black;
+  font-family: montserrat, sans-serif;
 }
 canvas {
   height: 100vh;
@@ -12,7 +14,9 @@ canvas {
   left: 0;
   width: 100%;
   display: block;
-  background-color: black;
+}
+.wrapper {
+  position: relative;
 }
 .hero {
   height: 90vh;
@@ -24,7 +28,6 @@ canvas {
   justify-content: center;
   text-align: center;
   h1 {
-    font-family: montserrat, sans-serif;
     font-size: 3em;
     color: $white;
     &.top {
@@ -86,6 +89,7 @@ nav {
   background-color: $darkgrey;
   color: $white;
   backdrop-filter: blur(10px);
+  z-index: 1;
 
   .header-container {
     display: flex;
@@ -100,6 +104,7 @@ nav {
   ul {
     display: flex;
     align-items: center;
+
     &.social {
       li {
         font-size: 1.5em;
@@ -116,9 +121,14 @@ nav {
       }
     }
     &.navigation {
+      color: rgb(250, 199, 72);
       margin-left: auto;
       justify-content: center;
       flex-wrap: wrap;
+      margin-top: -10px;
+      li {
+        margin-top: 10px;
+      }
       a {
         position: relative;
         &::after {
@@ -154,6 +164,281 @@ nav {
     }
   }
 }
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  margin: 10em auto 10em auto;
+}
+h2.section-title {
+  color: $white;
+  font-size: 3em;
+  font-weight: 700;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 55%;
+    left: 15%;
+    width: 90%;
+    height: 0.4em;
+    background-color: $primary;
+    z-index: -1;
+  }
+}
+section.about {
+  .top {
+    margin-top: 5em;
+    display: flex;
+    align-items: center;
+    flex: 1 1 0;
+    svg {
+      width: 25%;
+    }
+    p {
+      margin-left: 15%;
+      width: 60%;
+      color: $white;
+    }
+  }
+}
+section.skillset {
+  width: 85%;
+  h2 {
+    margin-bottom: 2em;
+  }
+  hr.line {
+    border: none;
+    height: 2px;
+    background-image: linear-gradient(to right, $black, $white, $black);
+    width: 100%;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0;
+    li {
+      margin: 1.5em 0.75em;
+      padding: 0.25em;
+      position: relative;
+      height: 4em;
+      width: 4em;
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+      &:after {
+        content: "microsoft sql";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: block;
+        text-align: center;
+        width: 100%;
+        height: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        font-size: 1em;
+        font-weight: 600;
+        color: $white;
+      }
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.142);
+
+        &::after {
+          animation: slide-out-top 0.75s ease-out 0s 1 normal forwards;
+        }
+      }
+      &.c-sharp {
+        &:after {
+          content: "C-Sharp";
+        }
+      }
+      &.html {
+        &:after {
+          content: "Html-5";
+        }
+      }
+      &.css {
+        &:after {
+          content: "Css-3";
+        }
+      }
+      &.js {
+        &:after {
+          content: "Javascript";
+        }
+      }
+      &.sass {
+        &:after {
+          content: "Sass";
+        }
+      }
+      &.angular {
+        &:after {
+          content: "Angular";
+        }
+      }
+      &.typescript {
+        &:after {
+          content: "Typescript";
+        }
+      }
+      &.git {
+        &:after {
+          content: "Git";
+        }
+      }
+      &.sql {
+        background-clip: content-box;
+        box-shadow: inset 0 0 0 0.5em transparent;
+        background-color: white;
+        &:hover {
+          box-shadow: inset 0 0 0 0.5em rgba(255, 255, 255, 0.142);
+        }
+        &:after {
+          content: "microsoft sql";
+        }
+      }
+    }
+  }
+}
+
+section.projects {
+  article.project {
+    margin-top: 5em;
+    display: flex;
+    justify-content: end;
+    &:nth-of-type(even) {
+      flex-direction: row-reverse;
+      justify-content: start;
+      .text {
+        margin-left: 0;
+        margin-right: auto;
+      }
+    }
+    img {
+      width: 60%;
+      object-fit: cover;
+      object-position: center;
+      max-height: 20em;
+      align-self: center;
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
+      margin-left: auto;
+      width: 35%;
+      color: $white;
+      h3 {
+        font-size: 3em;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 15%;
+          width: 70%;
+          height: 0.4em;
+          background-color: $secondary;
+          z-index: -1;
+        }
+      }
+      p {
+        margin: 2em 0;
+      }
+      a {
+        color: $white;
+        width: 10em;
+        text-transform: uppercase;
+        margin-top: 2em;
+        position: relative;
+        cursor: pointer;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -0.5em;
+          left: 0;
+          background-color: $secondary;
+          height: 3px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+section.experience {
+  color: $white;
+  .timeline {
+    position: relative;
+    width: 100%;
+    margin-top: 5em;
+    &::after {
+      content: "";
+      position: absolute;
+      left: calc(50% + 1px);
+      top: 0;
+      width: 1px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.362);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2em;
+      width: 100%;
+      .content {
+        background-color: $background-grey;
+        width: calc(40% - 2em);
+        margin-right: auto;
+        padding: 1em;
+        border-radius: 10px;
+        h4 {
+          font-weight: 600;
+        }
+        p {
+          font-size: 0.8em;
+          margin-top: 1em;
+          font-weight: 200;
+          a {
+            color: $white;
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
+      &:nth-of-type(even) {
+        .content {
+          margin-right: 0;
+          margin-left: auto;
+        }
+        .date {
+          left: calc(50% - 3em - 35px);
+        }
+      }
+      .circle {
+        position: absolute;
+        top: calc(50% - 0.5em);
+        left: calc(50% - 0.5em);
+        height: 1em;
+        width: 1em;
+        background-color: black;
+        border: 2px solid $secondary;
+        border-radius: 50%;
+        z-index: 1;
+      }
+      .date {
+        position: absolute;
+        top: calc(50% - 0.5em);
+        left: calc(50% + 3em);
+      }
+    }
+  }
+}
 
 @keyframes title-slide-in-left {
   from {
@@ -185,12 +470,86 @@ nav {
     transform: translateY(0);
   }
 }
+@keyframes slide-out-top {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+  100% {
+    opacity: 100;
+    transform: translateY(2em);
+  }
+}
 
 @media screen and (max-width: 850px) {
+  section {
+    width: 85%;
+  }
   .hero {
+    height: 85vh;
   }
   nav {
     height: 15vh;
+    font-size: 1em;
+    ul.navigation {
+      margin-left: 0;
+    }
+  }
+  section.about {
+    .top {
+      flex-direction: column;
+      svg {
+      }
+      p {
+        text-align: center;
+        margin: 3em 0;
+      }
+    }
+  }
+  section.projects {
+    article.project {
+      flex-direction: column-reverse;
+      align-items: center;
+      &:nth-of-type(even) {
+        flex-direction: column-reverse;
+        align-items: center;
+        .text {
+          margin-right: 0;
+        }
+      }
+      .text {
+        width: 60%;
+        margin-bottom: 5em;
+        align-items: center;
+        h3 {
+          font-size: 2em;
+        }
+        text-align: center;
+        margin-left: 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  section {
+    width: 90%;
+  }
+  .hero {
+    height: calc(85vh - 10px);
+  }
+  nav {
+    li.icon > a > svg {
+      height: 1em;
+      width: 1em;
+    }
+    li.name {
+      display: none;
+    }
+    padding-top: 10px;
     font-size: 1em;
     ul.navigation {
       margin-left: 0;

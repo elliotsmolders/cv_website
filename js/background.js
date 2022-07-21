@@ -7,9 +7,9 @@ const backgroundCanvas = function () {
 
   ctx.canvas.width = document.body.scrollWidth;
   ctx.canvas.height = window.innerHeight * 0.9;
-  const amountOfCircles = 75;
+  const amountOfCircles = 100;
   let circleArray;
-  const colorArray = ["darkblue", "blue", "blue", "darkblue", "darkred", "red"];
+  const colorArray = ["#1D2F6F", "#8390FA", "#FAC748"];
 
   //constructor
   function Circle(x, y, directionX, directionY, size, color) {
@@ -51,10 +51,10 @@ const backgroundCanvas = function () {
     for (let index = 0; index < amountOfCircles; index++) {
       const x = getRandomRange(0, canvas.width);
       const y = getRandomRange(0, canvas.height);
-      const size = 1.5;
+      const size = getRandomRange(5, 20) / 10;
       const directionX = getRandomRange(-20, 20) / 100;
       const directionY = getRandomRange(-20, 20) / 100;
-      const color = colorArray[getRandomRange(0, 4)];
+      const color = colorArray[getRandomRange(0, 2)];
       circleArray.push(new Circle(x, y, directionX, directionY, size, color));
     }
   }
