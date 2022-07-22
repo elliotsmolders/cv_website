@@ -23,3 +23,25 @@ document.querySelector("#home").addEventListener("click", function (e) {
     behavior: "smooth",
   });
 });
+//add active class to nav li item on scroll
+const arrOfSections = document.querySelectorAll("section");
+window.addEventListener("scroll", checkScrollPosition);
+//check scroll position
+
+function checkScrollPosition() {
+  const currentY = window.scrollY;
+  arrOfSections.forEach((element) => {
+    const sectionTop = element.offsetTop - 230;
+    const sectionHeight = element.offsetHeight;
+    if (currentY > sectionTop && currentY <= sectionTop + sectionHeight) {
+      document
+        .querySelector(`[data-section='${element.dataset.section}']`)
+        .classList.add("active");
+      console.log(element.dataset.section);
+    } else {
+      document
+        .querySelector(`[data-section='${element.dataset.section}']`)
+        .classList.remove("active");
+    }
+  });
+}

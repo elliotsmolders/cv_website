@@ -257,7 +257,6 @@ nav ul.social svg:hover {
   transition-duration: 0.5s;
 }
 nav ul.navigation {
-  color: rgb(250, 199, 72);
   margin-left: auto;
   justify-content: center;
   flex-wrap: wrap;
@@ -279,7 +278,7 @@ nav ul.navigation a::after {
   background-color: rgb(1, 143, 133);
   transition: 0.75s;
 }
-nav ul.navigation a:hover::after {
+nav ul.navigation a:hover::after, nav ul.navigation a.active::after {
   width: 100%;
 }
 nav ul li {
@@ -288,9 +287,6 @@ nav ul li {
 nav ul li a {
   padding: 5px;
   text-transform: uppercase;
-}
-nav ul li a.active {
-  color: rgb(1, 143, 133);
 }
 nav ul a {
   text-decoration: none;
@@ -322,6 +318,9 @@ h2.section-title::after {
   z-index: -1;
 }
 
+section.about h2 {
+  margin-bottom: 1em;
+}
 section.about .top {
   margin-top: 5em;
   display: flex;
@@ -341,7 +340,7 @@ section.skillset {
   width: 85%;
 }
 section.skillset h2 {
-  margin-bottom: 2em;
+  margin-bottom: 4em;
 }
 section.skillset hr.line {
   border: none;
@@ -692,6 +691,9 @@ section.contact form button:hover::after {
   section.about .top p {
     text-align: center;
     margin: 3em 0;
+  }
+  section.skillset h2 {
+    margin-bottom: 2em;
   }
   section.projects article.project {
     flex-direction: column-reverse;

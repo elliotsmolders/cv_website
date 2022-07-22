@@ -120,7 +120,6 @@ nav {
       }
     }
     &.navigation {
-      color: rgb(250, 199, 72);
       margin-left: auto;
       justify-content: center;
       flex-wrap: wrap;
@@ -140,7 +139,8 @@ nav {
           background-color: $primary;
           transition: 0.75s;
         }
-        &:hover {
+        &:hover,
+        &.active {
           &::after {
             width: 100%;
           }
@@ -152,9 +152,6 @@ nav {
       a {
         padding: 5px;
         text-transform: uppercase;
-        &.active {
-          color: $primary;
-        }
       }
     }
     a {
@@ -187,6 +184,9 @@ h2.section-title {
   }
 }
 section.about {
+  h2 {
+    margin-bottom: 1em;
+  }
   .top {
     margin-top: 5em;
     display: flex;
@@ -205,7 +205,7 @@ section.about {
 section.skillset {
   width: 85%;
   h2 {
-    margin-bottom: 2em;
+    margin-bottom: 4em;
   }
   hr.line {
     border: none;
@@ -581,6 +581,11 @@ section.contact {
         text-align: center;
         margin: 3em 0;
       }
+    }
+  }
+  section.skillset {
+    h2 {
+      margin-bottom: 2em;
     }
   }
   section.projects {
