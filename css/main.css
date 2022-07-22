@@ -141,7 +141,7 @@ a {
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: #282828;
+  background-color: #171717;
   font-family: montserrat, sans-serif;
 }
 
@@ -227,7 +227,6 @@ nav {
   background-color: rgb(60, 60, 60);
   color: #fff;
   z-index: 10;
-  border-bottom: 10px solid #282828;
 }
 nav .header-container {
   display: flex;
@@ -345,7 +344,7 @@ section.skillset h2 {
 section.skillset hr.line {
   border: none;
   height: 2px;
-  background-image: linear-gradient(to right, #000, #fff, #000);
+  background-image: linear-gradient(to right, #171717, #fff, #171717);
   width: 100%;
 }
 section.skillset ul {
@@ -542,7 +541,7 @@ section.experience .timeline .timeline-item .circle {
   left: calc(50% - 0.5em);
   height: 1em;
   width: 1em;
-  background-color: black;
+  background-color: #171717;
   border: 2px solid rgb(245, 96, 70);
   border-radius: 50%;
   z-index: 1;
@@ -605,26 +604,19 @@ section.contact form button::after {
 section.contact form button::before {
   content: "";
   position: absolute;
-  bottom: -100%;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 0%;
   background-color: rgb(245, 96, 70);
   z-index: -1;
+  transition: 0.5s;
 }
 section.contact form button:hover::before {
-  transition: 0.3s;
-  transform: translateY(-100%);
+  height: 100%;
 }
 section.contact form button:hover::after {
   background-color: transparent;
-}
-
-.cover {
-  transform: translateX(2px);
-  width: 100%;
-  height: 4em;
-  background-color: black;
 }
 
 @keyframes title-slide-in-left {

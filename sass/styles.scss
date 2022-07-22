@@ -4,7 +4,7 @@
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: $background-grey;
+  background-color: $background-grey-dark;
   font-family: montserrat, sans-serif;
 }
 canvas {
@@ -89,7 +89,6 @@ nav {
   background-color: $darkgrey;
   color: $white;
   z-index: 10;
-  border-bottom: 10px solid $background-grey;
   .header-container {
     display: flex;
     height: 100%;
@@ -210,7 +209,12 @@ section.skillset {
   hr.line {
     border: none;
     height: 2px;
-    background-image: linear-gradient(to right, $black, $white, $black);
+    background-image: linear-gradient(
+      to right,
+      $background-grey-dark,
+      $white,
+      $background-grey-dark
+    );
     width: 100%;
   }
   ul {
@@ -425,7 +429,7 @@ section.experience {
         left: calc(50% - 0.5em);
         height: 1em;
         width: 1em;
-        background-color: black;
+        background-color: $background-grey-dark;
         border: 2px solid $secondary;
         border-radius: 50%;
         z-index: 1;
@@ -487,17 +491,17 @@ section.contact {
       &::before {
         content: "";
         position: absolute;
-        bottom: -100%;
+        bottom: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 0%;
         background-color: $secondary;
         z-index: -1;
+        transition: 0.5s;
       }
       &:hover {
         &::before {
-          transition: 0.3s;
-          transform: translateY(-100%);
+          height: 100%;
         }
         &::after {
           background-color: transparent;
@@ -505,12 +509,6 @@ section.contact {
       }
     }
   }
-}
-.cover {
-  transform: translateX(2px);
-  width: 100%;
-  height: 4em;
-  background-color: black;
 }
 
 @keyframes title-slide-in-left {
