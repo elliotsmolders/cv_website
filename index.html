@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elliot Smolders C# Developer regio Brussel + Leuven</title>
-    <link rel="icon" href="./assets/images/tab_image.png" />
+    <link rel="icon" href="./assets/images/tab_icon_initials_centered.png" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
@@ -41,16 +41,28 @@
           </ul>
           <ul class="navigation">
             <li><a class="" id="home" href="">home</a></li>
-            <li><a class="nav" href="#about">about</a></li>
-            <li><a class="nav" href="#skills">skillset</a></li>
-            <li><a class="nav" href="#projects">projects</a></li>
-            <li><a class="nav" href="#experience">experience</a></li>
-            <li><a class="nav" href="#contact">contact</a></li>
+            <li><a class="nav" href="#about" data-section="about">about</a></li>
+            <li>
+              <a class="nav" href="#skills" data-section="skills">skillset</a>
+            </li>
+            <li>
+              <a class="nav" href="#projects" data-section="projects"
+                >projects</a
+              >
+            </li>
+            <li>
+              <a class="nav" href="#experience" data-section="experience"
+                >experience</a
+              >
+            </li>
+            <li>
+              <a class="nav" href="#contact" data-section="contact">contact</a>
+            </li>
           </ul>
         </div>
       </nav>
       <main>
-        <section class="about" id="about">
+        <section class="about" id="about" data-section="about">
           <h2 class="section-title">About</h2>
           <div class="top">
             <svg
@@ -82,7 +94,7 @@
           </div>
           <div class="bottom"></div>
         </section>
-        <section class="skillset" id="skills">
+        <section class="skillset" id="skills" data-section="skills">
           <h2 class="section-title">My Skillset</h2>
           <hr class="line" />
           <ul class="skills">
@@ -319,7 +331,7 @@
           </ul>
           <hr class="line" />
         </section>
-        <section class="projects" id="projects">
+        <section class="projects" id="projects" data-section="projects">
           <h2 class="section-title">Projects</h2>
           <article class="project">
             <img src="./assets/images/60-700x700.jpg" alt="project1 image" />
@@ -348,7 +360,7 @@
             </div>
           </article>
         </section>
-        <section class="experience" id="experience">
+        <section class="experience" id="experience" data-section="experience">
           <h2 class="section-title">Experience</h2>
           <div class="timeline">
             <div class="timeline-item">
@@ -385,7 +397,7 @@
             </div>
           </div>
         </section>
-        <section class="contact" id="contact">
+        <section class="contact" id="contact" data-section="contact">
           <h2 class="section-title">Contact</h2>
           <p>
             If you have any questions contact me through my
