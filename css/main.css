@@ -736,6 +736,9 @@ section.contact form button:hover::after {
   nav ul.navigation {
     margin-left: 0;
   }
+  section.contact {
+    width: 75%;
+  }
   section.contact p {
     margin: 2em 0;
   }

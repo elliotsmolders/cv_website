@@ -2,10 +2,9 @@ const backgroundCanvas = function () {
   const canvas = document.getElementById("background");
   const ctx = canvas.getContext("2d");
 
-  //console.log(canvas);
   //console.log(ctx);
 
-  ctx.canvas.width = document.body.scrollWidth;
+  ctx.canvas.width = document.body.clientWidth;
   ctx.canvas.height = window.innerHeight * 0.9;
   const amountOfCircles = 100;
   let circleArray;
@@ -74,8 +73,8 @@ const backgroundCanvas = function () {
   animate();
 
   window.addEventListener("resize", function () {
-    canvas.width = this.innerWidth;
-    canvas.height = this.innerHeight;
+    canvas.width = this.document.body.clientWidth;
+    canvas.height = this.window.innerHeight * 0.9;
     init();
   });
 };
