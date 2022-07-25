@@ -6,6 +6,9 @@ body {
   overflow-x: hidden;
   background-color: $background-grey-dark;
   font-family: montserrat, sans-serif;
+  &.locked {
+    overflow: hidden;
+  }
 }
 canvas {
   height: 100vh;
@@ -18,70 +21,75 @@ canvas {
 .wrapper {
   position: relative;
 }
-.hero {
-  height: 90vh;
+section.home {
+  margin: 0;
   width: 100%;
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  h1 {
-    font-size: 3em;
-    color: $white;
-    &.top {
-      animation: title-slide-in-left 1.5s ease-out 0s 1 normal forwards;
-    }
-    &.bottom {
-      animation: title-slide-in-right 1.5s ease-out 0s 1 normal forwards;
-    }
-  }
-  span {
-    color: $primary;
-  }
-  a {
-    position: relative;
-    margin-top: 2em;
-    color: $primary;
-    border: 2px solid $primary;
-    border-radius: 5px;
-    padding: 0.5em 1.5em;
-    font-size: 1.5em;
-    width: 8em;
-    opacity: 0;
-    animation: slide-in-bottom 1.5s ease-out 0.3s 1 normal forwards;
-    &::after,
-    &::before {
-      content: "";
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      height: 100%;
-      width: 100%;
-      border: 2px solid $primary;
-      transform-origin: 50%;
-      border-radius: 5px;
-    }
-    &:hover {
-      &::after {
-        filter: blur(2px);
-        transform: scale(1.3, 2);
-        opacity: 0;
-        transition-duration: 1.2s;
-        transition-timing-function: ease;
+  .hero {
+    height: 90vh;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    h1 {
+      font-size: 3em;
+      color: $white;
+      &.top {
+        animation: title-slide-in-left 1.5s ease-out 0s 1 normal forwards;
       }
+      &.bottom {
+        animation: title-slide-in-right 1.5s ease-out 0s 1 normal forwards;
+      }
+    }
+    span {
+      color: $primary;
+    }
+    a {
+      position: relative;
+      margin-top: 2em;
+      color: $primary;
+      border: 2px solid $primary;
+      border-radius: 5px;
+      padding: 0.5em 1.5em;
+      font-size: 1.5em;
+      width: 8em;
+      opacity: 0;
+      animation: slide-in-bottom 1.5s ease-out 0.3s 1 normal forwards;
+      &::after,
       &::before {
-        filter: blur(2px);
-        transform: scale(1.3, 2);
-        opacity: 0;
-        transition-duration: 1.2s;
-        transition-delay: 0.2s;
-        transition-timing-function: ease;
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        height: 100%;
+        width: 100%;
+        border: 2px solid $primary;
+        transform-origin: 50%;
+        border-radius: 5px;
+      }
+      &:hover {
+        &::after {
+          filter: blur(2px);
+          transform: scale(1.3, 2);
+          opacity: 0;
+          transition-duration: 1.2s;
+          transition-timing-function: ease;
+        }
+        &::before {
+          filter: blur(2px);
+          transform: scale(1.3, 2);
+          opacity: 0;
+          transition-duration: 1.2s;
+          transition-delay: 0.2s;
+          transition-timing-function: ease;
+        }
       }
     }
   }
 }
+
 nav {
   position: sticky;
   top: 0vh;
@@ -102,19 +110,26 @@ nav {
   ul {
     display: flex;
     align-items: center;
+    justify-content: center;
 
     &.social {
       li {
         font-size: 1.5em;
-      }
-      svg {
-        fill: $grey;
-        width: 1.5em;
-        height: 1.5em;
-        &:hover {
-          fill: $white;
-          transform: scale(1.1, 1.1);
-          transition-duration: 0.5s;
+
+        &.icon {
+          a {
+            display: block;
+            svg {
+              fill: $grey;
+              width: 1.5em;
+              height: 1.5em;
+              &:hover {
+                fill: $white;
+                transform: scale(1.1, 1.1);
+                transition-duration: 0.5s;
+              }
+            }
+          }
         }
       }
     }
@@ -139,7 +154,7 @@ nav {
           transition: 0.75s;
         }
         &:hover,
-        &.active {
+        &.active-section {
           &::after {
             width: 100%;
           }
@@ -204,7 +219,12 @@ section.about {
 section.skillset {
   width: 85%;
   h2 {
-    margin-bottom: 4em;
+    margin-bottom: 2em;
+  }
+  p {
+    width: 75%;
+    color: $white;
+    margin-bottom: 7em;
   }
   hr.line {
     border: none;
@@ -212,7 +232,7 @@ section.skillset {
     background-image: linear-gradient(
       to right,
       $background-grey-dark,
-      $white,
+      rgba(255, 255, 255, 0.6),
       $background-grey-dark
     );
     width: 100%;
@@ -361,7 +381,19 @@ section.projects {
         text-transform: uppercase;
         margin-top: 2em;
         position: relative;
+        padding: 5px;
         cursor: pointer;
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: -0.5em;
+          left: 0;
+          width: 100%;
+          height: 0%;
+          background-color: $secondary;
+          z-index: -1;
+          transition: 0.5s;
+        }
         &::after {
           content: "";
           position: absolute;
@@ -370,6 +402,11 @@ section.projects {
           background-color: $secondary;
           height: 3px;
           width: 100%;
+        }
+        &:hover {
+          &::before {
+            height: 2.5em;
+          }
         }
       }
     }
@@ -555,19 +592,25 @@ section.contact {
     transform: translateY(2em);
   }
 }
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 875px) {
   section {
     width: 85%;
   }
-  .hero {
-    height: 85vh;
-  }
+
   nav {
-    height: 15vh;
     font-size: 1em;
-    ul.navigation {
-      margin-left: 0;
+
+    li.name {
+      display: none;
     }
   }
   section.about {
@@ -580,9 +623,9 @@ section.contact {
       }
     }
   }
-  section.skills {
-    h2 {
-      margin-bottom: 2em;
+  section.skillset {
+    p.text {
+      text-align: center;
     }
   }
   section.projects {
@@ -596,8 +639,11 @@ section.contact {
           margin-right: 0;
         }
       }
+      img {
+        width: 80%;
+      }
       .text {
-        width: 60%;
+        width: 90%;
         margin-bottom: 5em;
         align-items: center;
         h3 {
@@ -617,26 +663,63 @@ section.contact {
     }
   }
 }
+@media screen and (max-width: 700px) {
+  nav {
+    ul.social > li.icon > a > svg {
+      fill: $white;
+    }
+    ul.navigation {
+      display: none;
+      height: 0;
+      transition: 1s;
+      li {
+        opacity: 0;
+      }
+      &.visible {
+        height: 105vh;
+        li {
+          animation: opacity 1s linear 0.25s 1 normal forwards;
+        }
+      }
+      &.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        z-index: -1;
+        li {
+          margin-top: 30px;
+        }
+      }
+    }
+    a.mobile-menu-icon {
+      display: block;
+      margin-left: auto;
+      margin-right: 10px;
+      height: 1.5em;
+      width: 1.5em;
+      padding: 5px;
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: $white;
+      }
+    }
+  }
+}
 @media screen and (max-width: 600px) {
   section {
     width: 90%;
   }
-  .hero {
-    height: calc(85vh - 10px);
-  }
+
   nav {
     li.icon > a > svg {
       height: 1em;
       width: 1em;
     }
-    li.name {
-      display: none;
-    }
-    padding-top: 10px;
     font-size: 1em;
-    ul.navigation {
-      margin-left: 0;
-    }
   }
   section.contact {
     width: 75%;

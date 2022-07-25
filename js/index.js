@@ -28,20 +28,82 @@ const arrOfSections = document.querySelectorAll("section");
 window.addEventListener("scroll", checkScrollPosition);
 //check scroll position
 
+//adds active-section to all elements with data-section-[this section]
 function checkScrollPosition() {
   const currentY = window.scrollY;
   arrOfSections.forEach((element) => {
     const sectionTop = element.offsetTop - 230;
     const sectionHeight = element.offsetHeight;
+    const arrOfCurrentSection = [
+      ...document.querySelectorAll(
+        `[data-section='${element.dataset.section}']`
+      ),
+    ];
     if (currentY > sectionTop && currentY <= sectionTop + sectionHeight) {
-      document
-        .querySelector(`[data-section='${element.dataset.section}']`)
-        .classList.add("active");
-      console.log(element.dataset.section);
+      arrOfCurrentSection.forEach((element) =>
+        element.classList.add("active-section")
+      );
     } else {
-      document
-        .querySelector(`[data-section='${element.dataset.section}']`)
-        .classList.remove("active");
+      arrOfCurrentSection.forEach((element) =>
+        element.classList.remove("active-section")
+      );
     }
   });
 }
+
+//mobile menu button
+document
+  .querySelector("#mobile-menu-icon")
+  .addEventListener("click", handleMobileIconClick);
+
+function handleMobileIconClick(event) {
+  console.log("menu icon clicked");
+  event.preventDefault();
+  scrollToActive();
+  toggleMenu();
+  toggleLock();
+}
+//scrolls to top of current section
+function scrollToActive() {
+  window.scrollTo({
+    top:
+      document.querySelector("section.active-section").offsetTop -
+      document.querySelector("#header-container").clientHeight -
+      80,
+    behavior: "smooth",
+  });
+}
+//function that toggles menu by adding/Removing open and visible class
+function toggleMenu() {
+  const navMenu = document.querySelector("ul.navigation");
+  if (navMenu.classList.contains("open")) {
+    navMenu.classList.remove("visible");
+    navMenu.addEventListener(
+      "webkitTransitionEnd",
+      () => {
+        console.log("removed");
+        navMenu.classList.remove("open");
+      },
+      { once: true }
+    );
+  } else {
+    navMenu.classList.add("open");
+    setTimeout(function () {
+      navMenu.classList.add("visible");
+    }, 1);
+  }
+}
+function toggleLock() {
+  const body = document.querySelector("body");
+  if (body.classList.contains("locked")) {
+    document.querySelector("body").classList.remove("locked");
+  } else {
+    document.querySelector("body").classList.add("locked");
+  }
+}
+//close menu when link is clicked
+document.querySelectorAll("a.nav").forEach((element) =>
+  element.addEventListener("click", () => {
+    toggleMenu();
+  })
+);
