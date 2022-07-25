@@ -5,7 +5,7 @@ const backgroundCanvas = function () {
   //console.log(ctx);
 
   ctx.canvas.width = document.body.clientWidth;
-  ctx.canvas.height = window.innerHeight * 0.9;
+  ctx.canvas.height = window.innerHeight;
   const amountOfCircles = 100;
   let circleArray;
   const colorArray = ["#1D2F6F", "#8390FA", "#FAC748"];
@@ -74,7 +74,7 @@ const backgroundCanvas = function () {
 
   window.addEventListener("resize", function () {
     canvas.width = this.document.body.clientWidth;
-    canvas.height = this.window.innerHeight * 0.9;
+    canvas.height = this.window.innerHeight;
     init();
   });
 };
