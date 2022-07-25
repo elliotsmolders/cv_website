@@ -101,9 +101,10 @@ function toggleLock() {
     document.querySelector("body").classList.add("locked");
   }
 }
-//close menu when link is clicked
+//close menu when link is clicked and unlock body
 document.querySelectorAll("a.nav").forEach((element) =>
   element.addEventListener("click", () => {
     toggleMenu();
+    toggleLock();
   })
 );
