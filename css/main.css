@@ -166,7 +166,7 @@ section.home {
   width: 100%;
 }
 section.home .hero {
-  height: 90vh;
+  height: 85vh;
   width: 100%;
   background-color: transparent;
   display: flex;
@@ -230,7 +230,7 @@ section.home .hero a:hover::before {
 nav {
   position: sticky;
   top: 0vh;
-  height: 10vh;
+  height: 15vh;
   background-color: rgb(60, 60, 60);
   color: #fff;
   z-index: 10;
