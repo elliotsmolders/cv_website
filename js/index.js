@@ -106,7 +106,9 @@ function toggleLock() {
 //close menu when link is clicked and unlock body
 document.querySelectorAll("a.nav").forEach((element) =>
   element.addEventListener("click", () => {
-    toggleMenu();
-    toggleLock();
+    if (screen.width <= 700) {
+      toggleMenu();
+      toggleLock();
+    }
   })
 );
