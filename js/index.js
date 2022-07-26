@@ -32,7 +32,8 @@ window.addEventListener("scroll", checkScrollPosition);
 function checkScrollPosition() {
   const currentY = window.scrollY;
   arrOfSections.forEach((element) => {
-    const sectionTop = element.offsetTop - 230;
+    const sectionTop =
+      element.offsetTop - document.querySelector("nav").offsetHeight;
     const sectionHeight = element.offsetHeight;
     const arrOfCurrentSection = [
       ...document.querySelectorAll(
@@ -43,6 +44,7 @@ function checkScrollPosition() {
       arrOfCurrentSection.forEach((element) =>
         element.classList.add("active-section")
       );
+      console.log(arrOfCurrentSection);
     } else {
       arrOfCurrentSection.forEach((element) =>
         element.classList.remove("active-section")
