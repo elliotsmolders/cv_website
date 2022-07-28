@@ -166,7 +166,7 @@ section.home {
   width: 100%;
 }
 section.home .hero {
-  height: 85vh;
+  height: 90vh;
   width: 100%;
   background-color: transparent;
   display: flex;
@@ -230,7 +230,7 @@ section.home .hero a:hover::before {
 nav {
   position: sticky;
   top: 0vh;
-  height: 15vh;
+  height: 10vh;
   background-color: rgb(60, 60, 60);
   color: #fff;
   z-index: 10;
@@ -706,7 +706,11 @@ section.contact form button:hover::after {
   section {
     width: 85%;
   }
+  section.home .hero {
+    height: 85vh;
+  }
   nav {
+    height: 15vh;
     font-size: 1em;
   }
   nav li.name {

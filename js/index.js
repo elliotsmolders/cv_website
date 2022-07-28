@@ -3,26 +3,29 @@ backgroundCanvas();
 
 //scrollto smooth
 const offset = document.querySelector("#header-container").clientHeight;
-console.log(offset);
 document.querySelectorAll("a.nav").forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    window.scrollTo({
-      top:
-        document.querySelector(this.getAttribute("href")).offsetTop -
-        offset -
-        80,
-      behavior: "smooth",
+  if (anchor.id == "home") {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     });
-  });
+  } else {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top:
+          document.querySelector(this.getAttribute("href")).offsetTop -
+          offset -
+          80,
+        behavior: "smooth",
+      });
+    });
+  }
 });
-document.querySelector("#home").addEventListener("click", function (e) {
-  e.preventDefault();
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-});
+
 //add active class to nav li item on scroll
 const arrOfSections = document.querySelectorAll("section");
 window.addEventListener("scroll", checkScrollPosition);
@@ -40,11 +43,13 @@ function checkScrollPosition() {
         `[data-section='${element.dataset.section}']`
       ),
     ];
-    if (currentY > sectionTop && currentY <= sectionTop + sectionHeight) {
+    if (
+      currentY > sectionTop - document.querySelector("nav").offsetHeight &&
+      currentY <= sectionTop + sectionHeight
+    ) {
       arrOfCurrentSection.forEach((element) =>
         element.classList.add("active-section")
       );
-      console.log(arrOfCurrentSection);
     } else {
       arrOfCurrentSection.forEach((element) =>
         element.classList.remove("active-section")
