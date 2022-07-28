@@ -18,8 +18,8 @@ document.querySelectorAll("a.nav").forEach((anchor) => {
       window.scrollTo({
         top:
           document.querySelector(this.getAttribute("href")).offsetTop -
-          offset -
-          80,
+          offset +
+          1,
         behavior: "smooth",
       });
     });
@@ -34,17 +34,20 @@ window.addEventListener("scroll", checkScrollPosition);
 //adds active-section to all elements with data-section-[this section]
 function checkScrollPosition() {
   const currentY = window.scrollY;
+  console.log({ currentY });
   arrOfSections.forEach((element) => {
     const sectionTop =
       element.offsetTop - document.querySelector("nav").offsetHeight;
     const sectionHeight = element.offsetHeight;
+    console.log({ sectionTop });
+    console.log({ sectionHeight });
     const arrOfCurrentSection = [
       ...document.querySelectorAll(
         `[data-section='${element.dataset.section}']`
       ),
     ];
     if (
-      currentY > sectionTop - document.querySelector("nav").offsetHeight &&
+      currentY > sectionTop && //??
       currentY <= sectionTop + sectionHeight
     ) {
       arrOfCurrentSection.forEach((element) =>
@@ -75,8 +78,8 @@ function scrollToActive() {
   window.scrollTo({
     top:
       document.querySelector("section.active-section").offsetTop -
-      document.querySelector("#header-container").clientHeight -
-      80,
+      document.querySelector("#header-container").clientHeight +
+      1,
     behavior: "smooth",
   });
 }

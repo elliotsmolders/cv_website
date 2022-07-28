@@ -6,7 +6,7 @@ const backgroundCanvas = function () {
 
   ctx.canvas.width = document.body.clientWidth;
   ctx.canvas.height = window.innerHeight;
-  const amountOfCircles = 100;
+  const amountOfCircles = 75;
   let circleArray;
   const colorArray = ["#1D2F6F", "#8390FA", "#FAC748"];
 
