@@ -2,7 +2,6 @@ const backgroundCanvas = function () {
   const canvas = document.getElementById("background");
   const ctx = canvas.getContext("2d");
 
-  //console.log(ctx);
 
   ctx.canvas.width = document.body.clientWidth;
   ctx.canvas.height = window.innerHeight;
@@ -19,8 +18,7 @@ const backgroundCanvas = function () {
     this.size = size;
     this.color = color;
   }
-  console.log(canvas);
-  console.log(ctx);
+
 
   //methods
 
@@ -67,9 +65,7 @@ const backgroundCanvas = function () {
     }
   }
 
-  //console.log(circleArray);
   init();
-  //console.log(circleArray);
   animate();
 
   window.addEventListener("resize", function () {
