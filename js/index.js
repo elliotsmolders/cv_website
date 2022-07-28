@@ -34,13 +34,10 @@ window.addEventListener("scroll", checkScrollPosition);
 //adds active-section to all elements with data-section-[this section]
 function checkScrollPosition() {
   const currentY = window.scrollY;
-  console.log({ currentY });
   arrOfSections.forEach((element) => {
     const sectionTop =
       element.offsetTop - document.querySelector("nav").offsetHeight;
     const sectionHeight = element.offsetHeight;
-    console.log({ sectionTop });
-    console.log({ sectionHeight });
     const arrOfCurrentSection = [
       ...document.querySelectorAll(
         `[data-section='${element.dataset.section}']`
@@ -67,7 +64,6 @@ document
   .addEventListener("click", handleMobileIconClick);
 
 function handleMobileIconClick(event) {
-  console.log("menu icon clicked");
   event.preventDefault();
   scrollToActive();
   toggleMenu();
@@ -91,7 +87,6 @@ function toggleMenu() {
     navMenu.addEventListener(
       "webkitTransitionEnd",
       () => {
-        console.log("removed");
         navMenu.classList.remove("open");
       },
       { once: true }
