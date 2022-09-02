@@ -710,10 +710,10 @@ section.contact form button:hover::after {
     width: 85%;
   }
   section.home .hero {
-    height: 85vh;
+    height: 90vh;
   }
   nav {
-    height: 15vh;
+    height: 10vh;
     font-size: 1em;
   }
   nav li.name {
